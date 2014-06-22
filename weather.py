@@ -1,5 +1,5 @@
 import json
-from urllib import response, request
+from urllib import request
 
 
 def main():
