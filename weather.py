@@ -14,15 +14,19 @@ def main():
     str_response = weather_response.readall().decode('utf-8')       # work around for python 3 (found on stackoverflow)
     weather_json = json.loads(str_response)
 
-    weather = weather_json['data']['current_condition'][0]
-    print('\n')
+    try:
+        weather = weather_json['data']['current_condition'][0]
+        print('\n')
 
-    # print out relevant weather conditions
-    print('Weather Conditions: ' + weather['weatherDesc'][0]['value'] + '\n' +
-          'Temperature (C): ' + weather['temp_C'] + '\n' +
-          'Temperature (F): ' + weather['temp_F'] + '\n' +
-          'Humidity: ' + weather['humidity'] + '%\n' +
-          'Wind Speed (MpH): ' + weather['windspeedMiles'] + ' ' + weather['winddir16Point'])
+        # print out relevant weather conditions
+        print('Weather Conditions: ' + weather['weatherDesc'][0]['value'] + '\n' +
+              'Temperature (C): ' + weather['temp_C'] + '\n' +
+              'Temperature (F): ' + weather['temp_F'] + '\n' +
+              'Humidity: ' + weather['humidity'] + '%\n' +
+              'Wind Speed (MpH): ' + weather['windspeedMiles'] + ' ' + weather['winddir16Point'])
+    except KeyError:
+        print('\n')
+        print(weather_json['data']['error'][0]['msg'])
 
 
 if __name__ == '__main__':
