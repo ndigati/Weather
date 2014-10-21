@@ -3,7 +3,7 @@ from urllib import request
 
 
 def main():
-    zip_code = input("Enter zip code: ")  # ask user for zip code of where they want weather
+    zip_code = input("Enter zip code: ")  # ask user for zip code of where they want the weather
 
     # add given zip code to api call
     url = 'http://api.worldweatheronline.com/free/v1/weather.ashx?q=' + \
